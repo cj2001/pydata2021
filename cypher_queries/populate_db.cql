@@ -1,27 +1,35 @@
-//CREATE CONSTRAINT tweets IF NOT EXISTS ON (t:Tweet) ASSERT t.text IS UNIQUE;
+// Load constraints
 CREATE CONSTRAINT people IF NOT EXISTS ON (p:Person) ASSERT p.name IS UNIQUE;
-CREATE CONSTRAINT hashtags IF NOT EXISTS ON (h:Hashtag) ASSERT h.tag IS UNIQUE;
+CREATE CONSTRAINT occ IF NOT EXISTS ON (o:Occupation) ASSERT o.type IS UNIQUE;
 
-// Bring in authored relationships
-:auto USING PERIODIC COMMIT 1000
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/cj2001/pydata2021/main/notebooks/data/tweets_with_ents.csv' AS line
-WITH line
-WHERE
-    line.clean IS NOT NULL
-MERGE (a:Person {name: line.login})
-MERGE (t:Tweet {text: line.clean, target: line.target})
-WITH a, t, line
-CALL apoc.create.relationship(a, 'AUTHORED', {}, t) YIELD rel
-RETURN a, t
+// Load in people, occupations
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/cj2001/pydata2021/main/notebooks/data/famous_people.csv' AS line 
+WITH line 
+WHERE line.summary IS NOT NULL 
+MERGE (p:Person {name: line.itemLabel, summary: line.summary}) 
+MERGE (o:Occupation {type: line.new_occ})
 
 
 
-// Bring in hashtag relationships
-:auto USING PERIODIC COMMIT 1000
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/cj2001/pydata2021/main/notebooks/data/tweets_with_ents.csv' AS line
-WITH line
-MERGE (t:Tweet {text: line.clean})
-MERGE (h:Hashtag {tag: line.hashtag})
-WITH t, h, line
-CALL apoc.create.relationship(t, 'HAS_TAG', {}, t) YIELD rel
-RETURN t, h
+// Create occupation relationship
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/cj2001/pydata2021/main/notebooks/data/famous_people.csv' AS line 
+WITH line 
+WHERE line.summary IS NOT NULL 
+MATCH (p:Person {name: line.itemLabel}) MATCH (o:Occupation {type: line.new_occ}) 
+MERGE (p)-[:HAS_OCCUPATION]->(o)
+
+// Set node properties
+MATCH (p:Person)-->(o:Occupation)
+WHERE o.type = "baseball player"
+SET p.is_politican = 0
+RETURN p.name, p.is_politican, o.type
+
+MATCH (p:Person)-->(o:Occupation)
+WHERE o.type = "actor"
+SET p.is_politican = 0
+RETURN p.name, p.is_politican, o.type
+
+MATCH (p:Person)-->(o:Occupation)
+WHERE o.type = "politician"
+SET p.is_politican = 1
+RETURN p.name, p.is_politican, o.type
