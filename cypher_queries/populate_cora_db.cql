@@ -12,4 +12,27 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/cj2001/pydata2021/
 WITH line
 MATCH (source:Paper {id: line.source})
 MATCH (target:Paper {id: line.target})
-MERGE (source)-[:Cites]->(target)
+MERGE (source)-[:CITES]->(target)
+RETURN COUNT(*)
+
+// Create in-memory graph of (Paper)-[:CITES]-(Paper)
+CALL gds.graph.create(
+    'cora',
+    'Paper',
+    {CITES: 
+        {
+            orientation: 'UNDIRECTED'
+        }
+    }
+)
+
+// Stream FastRP embeddings
+CALL gds.fastRP.stream('cora',
+ {
+     embeddingDimension: 10
+    }
+)
+YIELD nodeId, embedding
+RETURN gds.util.asNode(nodeId).id AS id, embedding
+LIMIT 10
+
