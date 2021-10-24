@@ -1,5 +1,5 @@
 # Working with Data in a Connected World: the Power of Graph Data Science
-## A PyData Global 2021 Tutorial
+### A PyData Global 2021 Tutorial
 ### Written by Dr. Clair J. Sullivan, Data Science Advocate, Neo4j
 #### email: clair.sullivan@neo4j.com
 #### Twitter: @CJLovesData1
