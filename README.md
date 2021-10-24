@@ -21,3 +21,5 @@ We will cover the following in this tutorial:
 - Evaluation and comparison of machine learning models based on word embeddings versus graph embeddings
 
 _This tutorial assumes no previous knowledge._  
+
+#### If you find any errors in this tutorial, please let us know by creating an issue in this repo!
