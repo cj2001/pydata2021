@@ -37,3 +37,6 @@ YIELD nodeId, embedding
 RETURN gds.util.asNode(nodeId).id AS id, embedding
 LIMIT 10
 
+// If things get really broken, delete the graph and start over
+MATCH (n) DETACH DELETE n
+
