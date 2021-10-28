@@ -22,4 +22,18 @@ We will cover the following in this tutorial:
 
 _This tutorial assumes no previous knowledge._  
 
+### Some helfpul resources
+
+- ["Graph Algorithms: Practical Examples in Apache Spark and Neo4j" (free book)](https://dev.neo4j.com/graph_algorithms_book)
+- [Create a Neo4j Sandbox](https://sandbox.neo4j.com/)
+- [Google Colab](https://colab.research.google.com/notebooks/welcome.ipynb)
+- [The Neo4j Cheat Sheet and Quick Reference](https://dev.neo4j.com/neo4j_cheatsheet)
+- [Cypher Manual](https://neo4j.com/docs/cypher-manual/current/)
+- [Neo4j Cypher Reference Card](https://neo4j.com/docs/cypher-refcard/current/)
+- [Advanced Cypher Query Tuning (video)](https://youtu.be/xPSKqm4hFRc)
+- [Graph Data Science Library API Docs](https://dev.neo4j.com/graph_data_science)
+- [Bite-Sized Neo4j for Data Scientists (video series)](https://neo4j.com/video/bite-sized-neo4j-for-data-scientists/)
+- [My Medium Articles](https://medium.com/@cj2001)
+
+
 #### If you find any errors in this tutorial, please let us know by creating an issue in this repo!
