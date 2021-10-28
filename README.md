@@ -24,7 +24,7 @@ _This tutorial assumes no previous knowledge._
 
 ### Some helfpul resources
 
-- ["Graph Algorithm Examples in Apache Spark and Neo4j" (free book)](https://dev.neo4j.com/graph_algorithms_book)
+- ["Graph Algorithms: Practical Examples in Apache Spark and Neo4j" (free book)](https://dev.neo4j.com/graph_algorithms_book)
 - [Create a Neo4j Sandbox](https://sandbox.neo4j.com/)
 - [Google Colab](https://colab.research.google.com/notebooks/welcome.ipynb)
 - [The Neo4j Cheat Sheet and Quick Reference](https://dev.neo4j.com/neo4j_cheatsheet)
