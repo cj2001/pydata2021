@@ -32,5 +32,7 @@ _This tutorial assumes no previous knowledge._
 - [Neo4j Cypher Reference Card](https://neo4j.com/docs/cypher-refcard/current/)
 - [Advanced Cypher Query Tuning (video)](https://youtu.be/xPSKqm4hFRc)
 - [Graph Data Science Library API Docs](https://dev.neo4j.com/graph_data_science)
+- [Bite-Sized Neo4j for Data Scientists (video series)](https://neo4j.com/video/bite-sized-neo4j-for-data-scientists/)
+
 
 #### If you find any errors in this tutorial, please let us know by creating an issue in this repo!
